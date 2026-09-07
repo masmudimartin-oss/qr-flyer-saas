@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculadora de Tarifa Freelance — Descubre tu tarifa mínima por hora</title>
+<meta name="description" content="Calcula tu tarifa mínima y recomendada por hora como freelance, teniendo en cuenta impuestos, gastos y horas no facturables.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="logo" href="#inicio">$/h <span>Calculadora Freelance</span></a>
+    <nav class="main-nav">
+      <a href="#tarifas-por-profesion">Por profesión</a>
+      <a href="#guia-de-tarifas">Guía de tarifas</a>
+      <a href="#calculadora" class="cta-link">Calcular ahora</a>
+    </nav>
+    <span class="tagline">Herramienta gratuita · Sin registro</span>
+  </div>
+</header>
+
+<main>
+
+  <section id="inicio" class="hero">
+    <div class="container">
+      <h1>Descubre la tarifa que realmente necesitas</h1>
+      <p class="subhead">La mayoría de las calculadoras de tarifas ignoran los impuestos, los gastos y las horas que no puedes facturar. Esta no.</p>
+    </div>
+  </section>
+
+  <section id="calculadora" class="calculator">
+    <div class="container calc-grid">
+
+      <form class="calc-form" id="calc-form">
+        <h2>Tus datos</h2>
+
+        <label>
+          Profesión
+          <select id="profesion"></select>
+        </label>
+
+        <label>
+          Nivel de experiencia
+          <select id="experiencia"></select>
+        </label>
+
+        <label>
+          Moneda
+          <select id="moneda"></select>
+        </label>
+
+        <label>
+          Ingreso anual objetivo (neto, después de impuestos)
+          <input type="number" id="ingreso-objetivo" value="30000" min="0" step="500">
+        </label>
+
+        <label class="range-label">
+          Ratio de horas facturables
+          <span class="range-value" id="ratio-value">60%</span>
+          <input type="range" id="ratio-facturable" min="20" max="90" value="60" step="1">
+          <small id="horas-no-facturables-nota">Horas al año dedicadas a administración, propuestas y marketing</small>
+        </label>
+
+        <label>
+          Gastos anuales del negocio
+          <span class="field-note">Software, equipo, seguros, coworking</span>
+          <input type="number" id="gastos" value="3000" min="0" step="100">
+        </label>
+
+        <label class="range-label">
+          Tipo impositivo estimado
+          <span class="range-value" id="impuesto-value">28%</span>
+          <input type="range" id="impuesto" min="0" max="55" value="28" step="1">
+          <small>Impuesto sobre la renta + cuotas de autónomo/a</small>
+        </label>
+
+        <label class="range-label">
+          Semanas trabajadas al año
+          <span class="range-value" id="semanas-value">46</span>
+          <input type="range" id="semanas" min="30" max="52" value="46" step="1">
+          <small>Se restan ~6 semanas de vacaciones, bajas y huecos entre proyectos</small>
+        </label>
+      </form>
+
+      <div class="calc-results">
+        <h2>Resultado</h2>
+        <div class="result-cards">
+          <div class="result-card highlight">
+            <span class="result-label">Tu tarifa mínima</span>
+            <span class="result-value" id="tarifa-minima">—</span>
+          </div>
+          <div class="result-card">
+            <span class="result-label">Tarifa recomendada <em>(+20% de margen)</em></span>
+            <span class="result-value" id="tarifa-recomendada">—</span>
+          </div>
+          <div class="result-card">
+            <span class="result-label">Horas facturables/año</span>
+            <span class="result-value" id="horas-facturables">—</span>
+          </div>
+          <div class="result-card">
+            <span class="result-label">Ingreso bruto necesario</span>
+            <span class="result-value" id="bruto-necesario">—</span>
+          </div>
+        </div>
+
+        <div class="market-insight" id="market-insight"></div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="breakdown">
+    <div class="container">
+      <h2>Cómo se calcula</h2>
+      <ul class="breakdown-list" id="breakdown-list">
+        <li><span>Ingreso neto objetivo</span><span id="bd-neto">—</span></li>
+        <li><span>+ Impuestos</span><span id="bd-impuestos">—</span></li>
+        <li><span>+ Gastos del negocio</span><span id="bd-gastos">—</span></li>
+        <li class="total"><span>= Ingreso bruto necesario</span><span id="bd-bruto">—</span></li>
+        <li><span>÷ Horas facturables al año</span><span id="bd-horas">—</span></li>
+        <li class="total highlight"><span>= Tarifa por hora</span><span id="bd-tarifa">—</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="guia-de-tarifas" class="market-rates">
+    <div class="container">
+      <h2>Tarifas de mercado por experiencia</h2>
+      <p class="section-sub">Estimaciones orientativas para <strong id="profesion-actual">tu profesión</strong>. La línea naranja marca tu tarifa mínima calculada.</p>
+      <div class="chart" id="chart"></div>
+      <p class="chart-note">Cifras orientativas basadas en rangos habituales del mercado freelance; varían según país, sector y cliente.</p>
+    </div>
+  </section>
+
+  <section id="tarifas-por-profesion" class="rates-grid-section">
+    <div class="container">
+      <h2>Tarifas por profesión</h2>
+      <div class="rates-grid" id="rates-grid"></div>
+    </div>
+  </section>
+
+  <section class="features">
+    <div class="container features-grid">
+      <div class="feature-card">
+        <h3>Cubre lo que otras calculadoras ignoran</h3>
+        <p>Incluye las horas que no puedes facturar, tus impuestos como autónomo/a y los gastos del negocio: todo lo que suele quedar fuera de una simple división de "sueldo entre horas".</p>
+      </div>
+      <div class="feature-card">
+        <h3>Referencias de mercado integradas</h3>
+        <p>Compara tu resultado con rangos típicos por profesión y nivel de experiencia, para saber si tu tarifa es realista o te estás quedando corto/a.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Resultado instantáneo, sin registro</h3>
+        <p>Todo el cálculo ocurre en tu navegador. No hace falta crear una cuenta ni dejar tu correo para ver el resultado.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="faq">
+    <div class="container">
+      <h2>Preguntas frecuentes</h2>
+
+      <details>
+        <summary>¿Por qué importa tanto el ratio de horas facturables?</summary>
+        <p>Ninguna persona freelance factura el 100% de su tiempo: hay que dedicar horas a buscar clientes, hacer propuestas, gestionar la administración y formarte. Si calculas tu tarifa asumiendo que vas a facturar 40 horas semanales todo el año, terminarás cobrando muy por debajo de lo que realmente necesitas.</p>
+      </details>
+
+      <details>
+        <summary>¿Cuál es la diferencia entre la tarifa mínima y la recomendada?</summary>
+        <p>La tarifa mínima es el punto de equilibrio: lo justo para cubrir tu objetivo de ingresos, impuestos y gastos. La tarifa recomendada añade un margen (+20%) para imprevistos, meses flojos, negociación y crecimiento del negocio.</p>
+      </details>
+
+      <details>
+        <summary>¿Cómo decido entre cobrar por hora o por proyecto?</summary>
+        <p>Usa tu tarifa por hora como referencia interna para presupuestar cualquier proyecto, aunque factures un precio cerrado. Estima las horas reales que te llevará el trabajo, multiplícalas por tu tarifa y añade margen para imprevistos.</p>
+      </details>
+
+      <details>
+        <summary>¿Cómo subo mis tarifas sin perder clientes?</summary>
+        <p>Sube tarifas de forma gradual y avisando con antelación, empezando por clientes nuevos. Apóyate en resultados concretos y en las referencias de mercado de esta calculadora para justificar el incremento.</p>
+      </details>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <h4>Por profesión</h4>
+      <ul id="footer-profesiones"></ul>
+    </div>
+    <div>
+      <h4>Guías</h4>
+      <ul>
+        <li><a href="#guia-de-tarifas">Cómo fijar tu tarifa</a></li>
+        <li><a href="#breakdown">Entender el cálculo</a></li>
+        <li><a href="#faq">Preguntas frecuentes</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="#">Política de privacidad</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <p>© 2026 Calculadora Freelance — Con fines meramente informativos.</p>
+    <p>Las tarifas de mercado mostradas son estimaciones orientativas y no constituyen asesoramiento financiero.</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
