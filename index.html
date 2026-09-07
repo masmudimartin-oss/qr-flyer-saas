@@ -6,6 +6,9 @@
 <title>Calculadora Hora Freelance — Descubre tu tarifa mínima por hora</title>
 <meta name="description" content="Calcula tu tarifa mínima y recomendada por hora como freelance, teniendo en cuenta impuestos, gastos y horas no facturables.">
 <link rel="icon" type="image/png" href="logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -27,9 +30,28 @@
 <main>
 
   <section id="inicio" class="hero">
-    <div class="container">
-      <h1>Descubre la tarifa que realmente necesitas</h1>
-      <p class="subhead">La mayoría de las calculadoras de tarifas ignoran los impuestos, los gastos y las horas que no puedes facturar. Esta no.</p>
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow">Calculadora gratuita para freelancers</p>
+        <h1>Descubre la tarifa que realmente necesitas</h1>
+        <p class="subhead">La mayoría de las calculadoras de tarifas ignoran los impuestos, los gastos y las horas que no puedes facturar. Esta no.</p>
+        <div class="hero-actions">
+          <a href="#calculadora" class="button-primary">Calcular mi tarifa</a>
+          <a href="#guia-de-tarifas" class="button-ghost">Ver tarifas de mercado</a>
+        </div>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <div class="readout">
+          <div class="readout-dots"><span></span><span></span><span></span></div>
+          <div class="readout-line readout-line--label">TARIFA MÍNIMA / H</div>
+          <div class="readout-line readout-line--big">42,50&nbsp;€</div>
+          <div class="readout-line readout-line--sub">1.104 h facturables · 46 sem/año</div>
+        </div>
+        <div class="readout-keys">
+          <span></span><span></span><span></span><span></span>
+          <span></span><span></span><span></span><span></span>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -89,7 +111,7 @@
 
       <div class="calc-results">
         <h2>Resultado</h2>
-        <div class="result-cards">
+        <div class="result-cards" aria-live="polite">
           <div class="result-card highlight">
             <span class="result-label">Tu tarifa mínima</span>
             <span class="result-value" id="tarifa-minima">—</span>
@@ -114,7 +136,7 @@
     </div>
   </section>
 
-  <section class="breakdown">
+  <section id="breakdown" class="breakdown">
     <div class="container">
       <h2>Cómo se calcula</h2>
       <ul class="breakdown-list" id="breakdown-list">
@@ -161,7 +183,7 @@
     </div>
   </section>
 
-  <section class="faq">
+  <section id="faq" class="faq">
     <div class="container">
       <h2>Preguntas frecuentes</h2>
 
