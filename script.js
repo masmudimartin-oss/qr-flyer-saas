@@ -77,8 +77,25 @@ function calcular() {
   };
 }
 
+let tarifaMinimaAnterior = null;
+
+function pulse(el) {
+  if (!el || (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches)) return;
+  el.classList.remove("flash");
+  void el.offsetWidth;
+  el.classList.add("flash");
+  setTimeout(() => el.classList.remove("flash"), 500);
+}
+
 function renderResultados() {
   const r = calcular();
+  const tarifaMinimaRedondeada = Math.round(r.tarifaMinima);
+
+  if (tarifaMinimaAnterior !== null && tarifaMinimaRedondeada !== tarifaMinimaAnterior) {
+    pulse(document.getElementById("tarifa-minima").closest(".result-card"));
+    pulse(document.getElementById("tarifa-recomendada").closest(".result-card"));
+  }
+  tarifaMinimaAnterior = tarifaMinimaRedondeada;
 
   document.getElementById("tarifa-minima").textContent = `${formatoMoneda(r.tarifaMinima)}/h`;
   document.getElementById("tarifa-recomendada").textContent = `${formatoMoneda(r.tarifaRecomendada)}/h`;
