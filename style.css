@@ -49,11 +49,18 @@ a:hover { text-decoration: underline; }
   flex-wrap: wrap;
 }
 .logo {
+  display: flex;
+  align-items: center;
   font-weight: 800;
   font-size: 1.1rem;
   color: var(--primary);
 }
 .logo span { color: var(--text); font-weight: 700; }
+.logo-img {
+  height: 44px;
+  width: auto;
+  display: block;
+}
 .main-nav { display: flex; gap: 18px; margin-left: auto; flex-wrap: wrap; }
 .main-nav a { color: var(--text); font-weight: 500; font-size: 0.95rem; }
 .cta-link {
