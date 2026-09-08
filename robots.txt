@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://masmudimartin-oss.github.io/qr-flyer-saas/sitemap.xml
