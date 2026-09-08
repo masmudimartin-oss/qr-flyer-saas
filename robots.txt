@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://masmudimartin-oss.github.io/qr-flyer-saas/sitemap.xml
+Sitemap: https://mmartin-claud.github.io/qr-flyer-saas/sitemap.xml
