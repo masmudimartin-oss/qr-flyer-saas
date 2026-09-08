@@ -120,9 +120,16 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 
 @media (max-width: 640px) {
   .tagline, .main-nav a:not(.cta-link) { display: none; }
-  .logo-img { height: 40px; }
-  .header-inner { gap: 14px; padding-top: 10px; padding-bottom: 10px; }
-  .cta-link { padding: 8px 13px; font-size: 0.88rem; }
+  .header-inner {
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    padding-top: 14px;
+    padding-bottom: 14px;
+  }
+  .logo { justify-content: center; }
+  .main-nav { margin-left: 0; width: 100%; justify-content: center; }
+  .cta-link { width: 100%; text-align: center; }
 }
 
 /* Buttons */
