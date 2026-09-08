@@ -3,6 +3,7 @@ const PROFESIONES = [
   { id: "design", label: "Diseñador/a UI/UX", rates: { entry: 30, mid: 60, senior: 95, expert: 140 } },
   { id: "writer", label: "Redactor/a de contenidos", rates: { entry: 25, mid: 50, senior: 80, expert: 110 } },
   { id: "marketing", label: "Especialista en marketing digital", rates: { entry: 28, mid: 55, senior: 85, expert: 120 } },
+  { id: "seo", label: "Consultor/a SEO", rates: { entry: 32, mid: 65, senior: 100, expert: 145 } },
   { id: "photo", label: "Fotógrafo/a o Videógrafo/a", rates: { entry: 30, mid: 58, senior: 90, expert: 130 } },
   { id: "consultant", label: "Consultor/a o Gestor/a de proyectos", rates: { entry: 40, mid: 85, senior: 130, expert: 190 } },
   { id: "accountant", label: "Contable / Tenedor/a de libros", rates: { entry: 28, mid: 55, senior: 88, expert: 125 } },
